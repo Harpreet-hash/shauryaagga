@@ -1074,7 +1074,8 @@ losBut.mousePressed(()=>{
 washBut.mousePressed(()=>{
     appState=18;
 })
-philadelphiaBut.mousePressed(()=>{
+philadelphiaBut.mousePressed(async()=>{
+    philadelphiahr=await getphiladelphiaTime();
     appState=19;
 })
 phoenixBut.mousePressed(()=>{
@@ -2180,7 +2181,7 @@ if(appState===18){
 }
 if(appState===19){
     background(bg2);
-     getphiladelphiaTime();
+     
     indiaBut.hide();
     usBut.hide();
     germanyBut.hide();
@@ -6141,7 +6142,7 @@ async function getphiladelphiaTime(){
      philadelphiahr=await responseJSON.location.localtime.slice(10,16)
     
     console.log(philadelphiahr)
-
+return philadelphiahr;
 }
 async function getchicagoTime(){
     var response=await fetch("http://api.weatherapi.com/v1/current.json?key=469320127ae8429099f105012212407&q&q=chicago&aqi=no");
